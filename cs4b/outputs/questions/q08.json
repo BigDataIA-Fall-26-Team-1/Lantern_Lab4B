@@ -1,0 +1,80 @@
+{
+  "answer": "2 row(s)\nperiod_role | total_fair_value | number_of_holdings\nprior | 756,843,673.00 | 105\ncurrent | 1,110,237,992.00 | 81",
+  "category": "over_time",
+  "decline": null,
+  "explanation": "This query calculates the total fair value and number of holdings for Kennedy Lewis Capital Co across the prior and current schedules by joining holdings and filings, filtering by the specific BDC name, and grouping by the period_role.",
+  "follows": null,
+  "id": "q08",
+  "model_calls": 1,
+  "question": "How did Kennedy Lewis Capital Co's total fair value and number of holdings change from the prior schedule to the current one?",
+  "result": {
+    "columns": [
+      "period_role",
+      "total_fair_value",
+      "number_of_holdings"
+    ],
+    "row_count": 2,
+    "rows": [
+      [
+        "prior",
+        756843673.0,
+        105
+      ],
+      [
+        "current",
+        1110237992.0,
+        81
+      ]
+    ],
+    "sql": "SELECT h.period_role, SUM(h.fair_value) AS total_fair_value, COUNT(*) AS number_of_holdings FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE f.name LIKE 'KENNEDY LEWIS CAPITAL CO%' AND f.name NOT LIKE 'KENNEDY LEWIS CAPITAL CO %' GROUP BY h.period_role ORDER BY h.period_role DESC",
+    "truncated": false
+  },
+  "sql": "SELECT h.period_role, SUM(h.fair_value) AS total_fair_value, COUNT(*) AS number_of_holdings FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE f.name LIKE 'KENNEDY LEWIS CAPITAL CO%' AND f.name NOT LIKE 'KENNEDY LEWIS CAPITAL CO %' GROUP BY h.period_role ORDER BY h.period_role DESC",
+  "stop": null,
+  "tokens": 1396,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q08",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "0ba9d33a80fac9768c59e14b00c0ec71d00349469aba6ae3bbc884a22e600ed3",
+      "run_id": "q08",
+      "sql_hash": "ae34d8ce0a32",
+      "step": 2,
+      "tokens_in": 1252,
+      "tokens_out": 144,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0007355999999999999
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q08",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "d2ea08fecae0",
+      "rows": 2,
+      "run_id": "q08",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q08",
+      "step": 5,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.0007356
+}
