@@ -1,0 +1,66 @@
+{
+  "questions": 10,
+  "answered": 9,
+  "declined": 1,
+  "failed": 0,
+  "repaired": [
+    "q01",
+    "q07"
+  ],
+  "model_calls": 13,
+  "tokens": 18309,
+  "usd_total": 0.00881,
+  "usd_per_question": 0.000881,
+  "usd_per_answered": 0.000979,
+  "latency_s": {
+    "median": 4.5649999999999995,
+    "max": 16.65
+  },
+  "sql_ms": {
+    "median": 17.4,
+    "max": 70.9,
+    "per_question": {
+      "q01": 17.4,
+      "q02": 11.6,
+      "q03": 17.0,
+      "q04": 15.8,
+      "q05": 23.1,
+      "q06": 39.3,
+      "q07": 70.9,
+      "q08": 9.8,
+      "q09": 42.4
+    }
+  },
+  "same_rows": {
+    "q01": true,
+    "q02": true,
+    "q03": true,
+    "q04": true,
+    "q05": true,
+    "q06": true,
+    "q07": true,
+    "q08": true,
+    "q09": true
+  },
+  "human": {
+    "minutes_per_question": 20,
+    "rate_usd": 120.0,
+    "table": [
+      {
+        "scenario": "x0.5",
+        "hours": 1.5,
+        "usd": 180.0
+      },
+      {
+        "scenario": "x1",
+        "hours": 3.0,
+        "usd": 360.0
+      },
+      {
+        "scenario": "x2",
+        "hours": 6.0,
+        "usd": 720.0
+      }
+    ]
+  }
+}
