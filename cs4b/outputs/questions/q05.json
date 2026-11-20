@@ -1,0 +1,89 @@
+{
+  "answer": "5 row(s)\nbdc | total_fair_value\nAPOLLO DEBT SOLUTIONS BDC | 24,515,628,000.00\nBLACKSTONE SECURED LENDING FUND | 14,210,461,000.00\nGOLUB CAPITAL PRIVATE CREDIT FUND | 9,828,933,000.00\nSIXTH STREET LENDING PARTNERS | 8,111,304,000.00\nOAKTREE STRATEGIC CREDIT FUND | 7,433,861,000.00",
+  "category": "cross_bdc",
+  "decline": null,
+  "explanation": "Calculates the total fair value of current holdings for each BDC using holdings_v, groups by BDC, orders by the total fair value in descending order, and limits the result to the top five BDCs.",
+  "follows": null,
+  "id": "q05",
+  "model_calls": 1,
+  "question": "Which five BDCs have the largest total fair value in their current schedules?",
+  "result": {
+    "columns": [
+      "bdc",
+      "total_fair_value"
+    ],
+    "row_count": 5,
+    "rows": [
+      [
+        "APOLLO DEBT SOLUTIONS BDC",
+        24515628000.0
+      ],
+      [
+        "BLACKSTONE SECURED LENDING FUND",
+        14210461000.0
+      ],
+      [
+        "GOLUB CAPITAL PRIVATE CREDIT FUND",
+        9828933000.0
+      ],
+      [
+        "SIXTH STREET LENDING PARTNERS",
+        8111304000.0
+      ],
+      [
+        "OAKTREE STRATEGIC CREDIT FUND",
+        7433861000.0
+      ]
+    ],
+    "sql": "SELECT bdc, SUM(fair_value) AS total_fair_value FROM holdings_v GROUP BY bdc ORDER BY total_fair_value DESC LIMIT 5",
+    "truncated": false
+  },
+  "sql": "SELECT bdc, SUM(fair_value) AS total_fair_value FROM holdings_v GROUP BY bdc ORDER BY total_fair_value DESC LIMIT 5",
+  "stop": null,
+  "tokens": 1331,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q05",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "2edb113e189271b1ce93a5e25de966e40d43acc31f2f27dbb0a1a430b832d70e",
+      "run_id": "q05",
+      "sql_hash": "9550c3341618",
+      "step": 2,
+      "tokens_in": 1242,
+      "tokens_out": 89,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0005950999999999999
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q05",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "1a5019d1bd04",
+      "rows": 5,
+      "run_id": "q05",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q05",
+      "step": 5,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.0005951
+}

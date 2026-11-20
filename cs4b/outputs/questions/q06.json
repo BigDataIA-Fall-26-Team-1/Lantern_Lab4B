@@ -1,0 +1,109 @@
+{
+  "answer": "10 row(s)\nbdc | avg_price\nVENTURE LENDING & LEASING IX, INC. | 63.14\nNMF SLF I, INC. | 72.51\nKKR ENHANCED US DIRECT LENDING FUND-L INC. | 78.16\nANTARES STRATEGIC CREDIT FUND II LLC | 78.51\nHANCOCK PARK CORPORATE INCOME, INC. | 82.09\n... 5 more row(s)",
+  "category": "cross_bdc",
+  "decline": null,
+  "explanation": "Calculates the average price across current debt holdings for each BDC, filtering out equity (is_debt = 1) and missing prices, and returns the top 10 BDCs with the lowest average price.",
+  "follows": null,
+  "id": "q06",
+  "model_calls": 1,
+  "question": "Which ten BDCs have the lowest average price across their current debt holdings?",
+  "result": {
+    "columns": [
+      "bdc",
+      "avg_price"
+    ],
+    "row_count": 10,
+    "rows": [
+      [
+        "VENTURE LENDING & LEASING IX, INC.",
+        63.14122837837838
+      ],
+      [
+        "NMF SLF I, INC.",
+        72.50805311653117
+      ],
+      [
+        "KKR ENHANCED US DIRECT LENDING FUND-L INC.",
+        78.15639124423963
+      ],
+      [
+        "ANTARES STRATEGIC CREDIT FUND II LLC",
+        78.51215982142857
+      ],
+      [
+        "HANCOCK PARK CORPORATE INCOME, INC.",
+        82.08760425531915
+      ],
+      [
+        "WILLOW TREE CAPITAL CORP",
+        82.54357536231883
+      ],
+      [
+        "WTI FUND X, INC.",
+        83.07305562130178
+      ],
+      [
+        "OHA SENIOR PRIVATE LENDING FUND (U) LLC",
+        84.1539664516129
+      ],
+      [
+        "WEST BAY BDC LLC",
+        86.96566779661018
+      ],
+      [
+        "SOUND POINT DIRECT LENDING BDC",
+        87.21322264150943
+      ]
+    ],
+    "sql": "SELECT bdc, AVG(price) AS avg_price FROM holdings_v WHERE is_debt = 1 AND price IS NOT NULL GROUP BY bdc ORDER BY avg_price ASC LIMIT 10",
+    "truncated": false
+  },
+  "sql": "SELECT bdc, AVG(price) AS avg_price FROM holdings_v WHERE is_debt = 1 AND price IS NOT NULL GROUP BY bdc ORDER BY avg_price ASC LIMIT 10",
+  "stop": null,
+  "tokens": 1338,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q06",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "a692bdc0f564a2a65fb0b5b0fbe1ad4712a14b1a8dc94cb948f9114277145b92",
+      "run_id": "q06",
+      "sql_hash": "bfdcb58ef848",
+      "step": 2,
+      "tokens_in": 1242,
+      "tokens_out": 96,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0006125999999999999
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q06",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "b8ecc3692ead",
+      "rows": 10,
+      "run_id": "q06",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q06",
+      "step": 5,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.0006126
+}

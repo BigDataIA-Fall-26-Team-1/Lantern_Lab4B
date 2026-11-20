@@ -1,0 +1,103 @@
+{
+  "answer": "1 row(s)\nadsh | bdc | identifier | fair_value\n0001193125-26-076572 | FIDUS INVESTMENT CORP | Affiliate Investments Pfanstiehl Inc Health Products Common Equity (2,550 units) Investment date 3/29/2013 | 40,995,000.00",
+  "category": "lookup",
+  "decline": null,
+  "explanation": "Retrieve the single largest holding by fair value in Fidus Investment Corp's current schedule from holdings_v, correcting the column name from adsch to adsh and avoiding sibling funds.",
+  "follows": null,
+  "id": "q01",
+  "model_calls": 2,
+  "question": "What is the largest single holding by fair value in Fidus Investment Corp's current schedule?",
+  "result": {
+    "columns": [
+      "adsh",
+      "bdc",
+      "identifier",
+      "fair_value"
+    ],
+    "row_count": 1,
+    "rows": [
+      [
+        "0001193125-26-076572",
+        "FIDUS INVESTMENT CORP",
+        "Affiliate Investments Pfanstiehl Inc Health Products Common Equity (2,550 units) Investment date 3/29/2013",
+        40995000.0
+      ]
+    ],
+    "sql": "SELECT adsh, bdc, identifier, fair_value FROM holdings_v WHERE bdc LIKE 'FIDUS INVESTMENT CORP%' AND bdc NOT LIKE 'FIDUS INVESTMENT CORP II%' ORDER BY fair_value DESC LIMIT 1",
+    "truncated": false
+  },
+  "sql": "SELECT adsh, bdc, identifier, fair_value FROM holdings_v WHERE bdc LIKE 'FIDUS INVESTMENT CORP%' AND bdc NOT LIKE 'FIDUS INVESTMENT CORP II%' ORDER BY fair_value DESC LIMIT 1",
+  "stop": null,
+  "tokens": 2732,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q01",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "57e545f8b6daa246e59a5142c370820443969b37a9684a7a56a1324057622d2e",
+      "run_id": "q01",
+      "sql_hash": "1fb828c3f83b",
+      "step": 2,
+      "tokens_in": 1246,
+      "tokens_out": 58,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0005187999999999999
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q01",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "invalid",
+      "run_id": "q01",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 1,
+      "node": "generate",
+      "request_key": "66a0dd1211b2236b1b1f4c5e7884761400e06d4f3f6b443d5ab5f66b76529eef",
+      "run_id": "q01",
+      "sql_hash": "666571028f83",
+      "step": 5,
+      "tokens_in": 1334,
+      "tokens_out": 94,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0006352
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q01",
+      "step": 6,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "787e9f68075d",
+      "rows": 1,
+      "run_id": "q01",
+      "step": 7,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q01",
+      "step": 8,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.001154
+}

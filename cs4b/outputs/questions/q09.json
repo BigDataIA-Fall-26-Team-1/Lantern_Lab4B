@@ -1,0 +1,89 @@
+{
+  "answer": "5 row(s)\nbdc | growth_dollars\nAPOLLO DEBT SOLUTIONS BDC | 9,960,093,000.00\nANTARES STRATEGIC CREDIT FUND | 2,148,950,000.00\nMSD INVESTMENT CORP. | 1,861,990,000.00\nGOLUB CAPITAL PRIVATE CREDIT FUND | 1,349,616,000.00\nBLACKROCK PRIVATE CREDIT FUND | 1,204,307,703.00",
+  "category": "over_time",
+  "decline": null,
+  "explanation": "Calculates the change in total fair value from the prior schedule to the current schedule for each BDC using the holdings and filings tables, and returns the top 5 BDCs with the largest absolute dollar growth.",
+  "follows": null,
+  "id": "q09",
+  "model_calls": 1,
+  "question": "Which five BDCs grew their total fair value the most, in dollars, from the prior schedule to the current one?",
+  "result": {
+    "columns": [
+      "bdc",
+      "growth_dollars"
+    ],
+    "row_count": 5,
+    "rows": [
+      [
+        "APOLLO DEBT SOLUTIONS BDC",
+        9960093000.0
+      ],
+      [
+        "ANTARES STRATEGIC CREDIT FUND",
+        2148950000.0
+      ],
+      [
+        "MSD INVESTMENT CORP.",
+        1861990000.0
+      ],
+      [
+        "GOLUB CAPITAL PRIVATE CREDIT FUND",
+        1349616000.0
+      ],
+      [
+        "BLACKROCK PRIVATE CREDIT FUND",
+        1204307703.0
+      ]
+    ],
+    "sql": "WITH prior_tot AS (SELECT f.name AS bndc, SUM(h.fair_value) AS prior_fv FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE h.period_role = 'prior' GROUP BY f.name), current_tot AS (SELECT f.name AS bndc, SUM(h.fair_value) AS curr_fv FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE h.period_role = 'current' GROUP BY f.name) SELECT p.bndc AS bdc, (c.curr_fv - p.prior_fv) AS growth_dollars FROM prior_tot p JOIN current_tot c ON p.bndc = c.bndc ORDER BY growth_dollars DESC LIMIT 5",
+    "truncated": false
+  },
+  "sql": "WITH prior_tot AS (SELECT f.name AS bndc, SUM(h.fair_value) AS prior_fv FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE h.period_role = 'prior' GROUP BY f.name), current_tot AS (SELECT f.name AS bndc, SUM(h.fair_value) AS curr_fv FROM holdings h JOIN filings f ON h.adsh = f.adsh WHERE h.period_role = 'current' GROUP BY f.name) SELECT p.bndc AS bdc, (c.curr_fv - p.prior_fv) AS growth_dollars FROM prior_tot p JOIN current_tot c ON p.bndc = c.bndc ORDER BY growth_dollars DESC LIMIT 5",
+  "stop": null,
+  "tokens": 1478,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q09",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "03320d534af3d3a3b55d86743811bcc075427b7dd475c0395c181ccadcbd367d",
+      "run_id": "q09",
+      "sql_hash": "78e06c701b93",
+      "step": 2,
+      "tokens_in": 1251,
+      "tokens_out": 227,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.0009427999999999999
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q09",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "ee10bdfea736",
+      "rows": 5,
+      "run_id": "q09",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q09",
+      "step": 5,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.0009428
+}

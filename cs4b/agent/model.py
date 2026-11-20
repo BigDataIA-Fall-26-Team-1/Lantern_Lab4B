@@ -28,10 +28,12 @@ RULES = """Rules:
 - holdings_v has ONE row per CURRENT holding. Use it for any question about the current portfolio.
 - For prior vs current (over time), use the holdings table with period_role = 'prior' or 'current', joined to filings ON adsh.
 - Never sum both schedules together: every total would double.
-- BDC names are spelled exactly as the SEC data set spells them (often upper case, with CORP or INC). Match a name with bdc LIKE '%WORD%' (or name LIKE ... in filings), not with =.
+- BDC names are spelled exactly as the SEC data set spells them (often upper case, with CORP, INC or LLC). Match a named BDC from the START of its name: bdc LIKE 'NAME%' (or name LIKE 'NAME%' in filings), never with a leading % and not with =.
+- Sibling funds share a name and add a suffix (II, IV, a letter, INCOME FUND, LLC). When the analyst names one BDC, exclude longer names that add such a suffix, e.g. bdc LIKE 'NAME%' AND bdc NOT LIKE 'NAME II%', unless the analyst named that fund. Include bdc in the output so the reader sees which fund matched.
 - price is already 100 * fair_value / principal (NULL for equity); is_debt is 1 for debt. Use them; do not rebuild them.
 - Rates are decimals: 0.02 means 2%.
 - Return only the columns the question needs, include bdc (or name) when rows come from several BDCs, and add ORDER BY and a LIMIT (at most 50) for lists.
+- Follow-ups: in a question that follows earlier ones in this conversation, "those", "them", "it" and "that" refer to the RESULT of the previous question. Reuse the previous SQL as a CTE or subquery (for example, take its lowest or highest row) and answer from there. Never decline a follow-up because it refers to earlier results.
 - If the data cannot answer the question (forecasts, opinions, anything not in these columns), decline."""
 
 

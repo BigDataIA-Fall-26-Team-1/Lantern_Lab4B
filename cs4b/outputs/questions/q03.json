@@ -1,0 +1,77 @@
+{
+  "answer": "2 row(s)\nbdc | share_first_lien_debt\nANTARES STRATEGIC CREDIT FUND | 0.9579\nANTARES STRATEGIC CREDIT FUND II LLC | 0.9719",
+  "category": "aggregation",
+  "decline": null,
+  "explanation": "Calculates the share of total fair value that is first lien debt (is_debt = 1 and identifier matching first lien or 1st lien) for Antares Strategic Credit Fund.",
+  "follows": null,
+  "id": "q03",
+  "model_calls": 1,
+  "question": "What share of Antares Strategic Credit Fund's current fair value is first lien debt?",
+  "result": {
+    "columns": [
+      "bdc",
+      "share_first_lien_debt"
+    ],
+    "row_count": 2,
+    "rows": [
+      [
+        "ANTARES STRATEGIC CREDIT FUND",
+        0.9578521689626831
+      ],
+      [
+        "ANTARES STRATEGIC CREDIT FUND II LLC",
+        0.9719201597848648
+      ]
+    ],
+    "sql": "SELECT bdc, SUM(CASE WHEN (identifier LIKE '%first lien%' OR identifier LIKE '%1st lien%') AND is_debt = 1 THEN fair_value ELSE 0.0 END) / SUM(fair_value) AS share_first_lien_debt FROM holdings_v WHERE bdc LIKE 'ANTARES STRATEGIC CREDIT FUND%' GROUP BY bdc",
+    "truncated": false
+  },
+  "sql": "SELECT bdc, SUM(CASE WHEN (identifier LIKE '%first lien%' OR identifier LIKE '%1st lien%') AND is_debt = 1 THEN fair_value ELSE 0.0 END) / SUM(fair_value) AS share_first_lien_debt FROM holdings_v WHERE bdc LIKE 'ANTARES STRATEGIC CREDIT FUND%' GROUP BY bdc",
+  "stop": null,
+  "tokens": 1372,
+  "trace": [
+    {
+      "node": "load_schema",
+      "run_id": "q03",
+      "schema_hash": "dc02aa0ec2d5",
+      "step": 1,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "attempt": 0,
+      "node": "generate",
+      "request_key": "e7ec4b963b9a36e9b7280a57bb367abc50c46f993c1df920591072c5eeb3917c",
+      "run_id": "q03",
+      "sql_hash": "4a7ed511e7b8",
+      "step": 2,
+      "tokens_in": 1245,
+      "tokens_out": 127,
+      "ts": "2026-11-16T09:00:00-05:00",
+      "usd": 0.000691
+    },
+    {
+      "node": "check",
+      "outcome": "ok",
+      "run_id": "q03",
+      "step": 3,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "execute",
+      "outcome": "ok",
+      "result_hash": "0c13d810291a",
+      "rows": 2,
+      "run_id": "q03",
+      "step": 4,
+      "ts": "2026-11-16T09:00:00-05:00"
+    },
+    {
+      "node": "summarize",
+      "run_id": "q03",
+      "step": 5,
+      "stop": null,
+      "ts": "2026-11-16T09:00:00-05:00"
+    }
+  ],
+  "usd": 0.000691
+}
