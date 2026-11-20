@@ -7,7 +7,7 @@ answer comes back with the rows and the SQL behind it.
 Built on the real Lab 3B panel: 72 BDC filings, 21,944 current holdings, period 2025-12-31.
 Model: `gemini-3.5-flash-lite`, recorded once and replayed from `outputs/cache/` (no key needed).
 
-**Demo video:** (link added after recording)
+**Demo video (under 10 minutes):** [Watch on Google Drive](https://drive.google.com/file/d/1mfk4bGIFduw5CiG_ecTTq2W524BoX6Py/view?usp=sharing)
 
 ## Setup and reproducibility (no API key needed)
 
