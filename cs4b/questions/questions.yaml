@@ -1,0 +1,32 @@
+﻿# Ten questions on the real panel (72 BDC filings, period 2025-12-31).
+- id: q01
+  category: lookup
+  question: "What is the largest single holding by fair value in Fidus Investment Corp's current schedule?"
+- id: q02
+  category: lookup
+  question: "Which current holding at Blackstone Secured Lending Fund has the highest PIK rate, and what is that rate?"
+- id: q03
+  category: aggregation
+  question: "What share of Antares Strategic Credit Fund's current fair value is first lien debt?"
+- id: q04
+  category: aggregation
+  question: "How many current holdings does Morgan Stanley Direct Lending Fund report, and what is their total fair value?"
+- id: q05
+  category: cross_bdc
+  question: "Which five BDCs have the largest total fair value in their current schedules?"
+- id: q06
+  category: cross_bdc
+  question: "Which ten BDCs have the lowest average price across their current debt holdings?"
+- id: q07
+  category: follow_up
+  follows: q06
+  question: "Which holdings pull the lowest of those averages down the most?"
+- id: q08
+  category: over_time
+  question: "How did Kennedy Lewis Capital Co's total fair value and number of holdings change from the prior schedule to the current one?"
+- id: q09
+  category: over_time
+  question: "Which five BDCs grew their total fair value the most, in dollars, from the prior schedule to the current one?"
+- id: q10
+  category: decline
+  question: "Which of Golub Capital BDC 4's borrowers will default next year?"
