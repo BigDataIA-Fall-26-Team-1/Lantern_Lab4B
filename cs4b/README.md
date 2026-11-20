@@ -1,5 +1,8 @@
 # Lab 4B: Ask the Panel (Project LANTERN, Part 4B)
 
+**Team:** Pranav Waghmare, Preksha Praveen, Pradyumna Reddy Cherla
+
+
 A natural-language query interface over the BDC panel. An analyst types a question; a LangGraph
 agent asks Gemini for ONE SQL query as a Pydantic object, a read-only MCP server runs it, and the
 answer comes back with the rows and the SQL behind it.
